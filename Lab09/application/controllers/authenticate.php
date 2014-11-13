@@ -16,9 +16,9 @@ class Authenticate extends Application
     function __construct() {
         parent::__construct();
     }
-    function index($username)
+    function index()
     {
-        $this->data['pagebody'] = 'form';
+        $this->data['pagebody'] = 'login';
         $this->data['title'] = 'login';
         
         // use “item” as the session key
@@ -34,22 +34,15 @@ class Authenticate extends Application
                 $item_record = $session_record;
             }
         }
-        // if no item-in progress record {
-        if ($item_record == null) {
-            // get the item record from the items model
-            $item_record = (array) $this->menu->get($username);
-            // save it as the “item” session object
-            $this->session->set_userdata('user', $item_record);
-        }
 
         // merge the view parms with the current item record
         //        $this->data = array_merge($this->data, $item_record);
         // we need to construct pretty editing fields using the formfields helper
         $this->load->helper('formfields');
-        $this->data['fusername'] = makeTextField('User Name', 'id', $item_record['id'], "item identifier ... cannot be changed", 10, 25, true);
-        $this->data['fpassword'] = makeTextField('Password', 'password', $item_record['password'], "Name your customers are comfortable with");
+        $this->data['fusername'] = makeTextField('User Name', 'id', '', "You must have an username", 10, 25);
+        $this->data['fpassword'] = makePasswordField('Password', 'password', '', "Account must have a password");
         
-        $this->data['fsubmit'] = makeSubmitButton('Post Changes', 'Do you feel lucky?');
+        $this->data['fsubmit'] = makeSubmitButton('Login', 'Do you feel lucky?');
         
         $this->render();
     }
