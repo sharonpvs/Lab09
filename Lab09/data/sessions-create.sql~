@@ -1,0 +1,220 @@
+-- phpMyAdmin SQL Dump
+-- version 3.4.5
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: Nov 12, 2013 at 11:30 PM
+-- Server version: 5.5.16
+-- PHP Version: 5.3.8
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+
+--
+-- Database: `geeks`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ci_sessions`
+--
+
+CREATE TABLE IF NOT EXISTS `ci_sessions` (
+  `session_id` varchar(40) NOT NULL DEFAULT '0',
+  `ip_address` varchar(45) NOT NULL DEFAULT '0',
+  `user_agent` varchar(120) NOT NULL,
+  `last_activity` int(10) unsigned NOT NULL DEFAULT '0',
+  `user_data` text NOT NULL,
+  PRIMARY KEY (`session_id`),
+  KEY `last_activity_idx` (`last_activity`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `ci_sessions`
+--
+
+INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
+('16b7991a5d4f8ede17cbe510f956a46a', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384318310, ''),
+('1d2b0076e5922db63d774639c16cc27f', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384320599, ''),
+('2146f18da32a532c2136abb4912920c1', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384320950, ''),
+('2be9cd37b4c9bb2cf27f310ba8948e9d', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384322043, ''),
+('2eb8f95eeac8742cbaeefae8c26797fa', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384321092, ''),
+('4108936e7004ca61547d9ec99146198f', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384320173, ''),
+('43a876f4c5162468ccf1a8b3a49fddcf', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384320843, ''),
+('47a643916cde4f81733b0a03aef577a2', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384321829, ''),
+('48b7bd010922262f26be3cdf9d6ddaa8', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384321798, ''),
+('4ef1981044096212bf3229c400e42f54', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384319697, ''),
+('5374f56a163ca6f12cce3d768e38e47c', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384321964, ''),
+('553c64a513afcd878fd326b8fb5d7371', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384320236, ''),
+('5a4809cd78d63e6d180d277c40cb2088', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384320631, ''),
+('5a8b80226ba6baefbb8078fa6fd5aa6b', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384319890, ''),
+('6518ec4a474bffde8a0ca75f30bc0d2c', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384320361, ''),
+('655bd98adeeed2496eac5b9be3dd647d', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384317931, ''),
+('66cecef2395770b28c23d4b0afc20bd4', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384320471, ''),
+('6b055e9177fecf1a57a3fed1609a115f', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384320280, ''),
+('6e678556118e1d67af4d134695616df4', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384320191, ''),
+('7551c1600bb7361776f8857462cd4ede', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384319831, ''),
+('75889441036edd68e0c43e0536dcc10c', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384321102, ''),
+('7adc312464d8ed8fac437ba1b83e0523', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384319119, ''),
+('7c154a1cca54e675e30469a768d3385b', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384321896, ''),
+('7fe5b0e9f42d5822f396ec304973585a', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384320558, ''),
+('86f92414caa51710700156b05aa97388', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384321848, ''),
+('88de1703d8b7485a2003682b65a01145', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384321053, ''),
+('89f1e50a6cc870da5434cfb6ce0d6f49', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384319442, ''),
+('8d7ea6e54bba324cf495456dd7ff9cbe', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384319547, ''),
+('92837569ad9279fa7d31801d6c8864e8', '127.0.0.1', 'Mozilla/5.0 (X11; SunOS i86pc; rv:21.0) Gecko/20100101 Firefox/21.0', 1384317785, 'a:4:{s:9:"user_data";s:0:"";s:6:"userID";s:6:"donald";s:8:"userName";s:14:"The Boss Ducky";s:8:"userRole";s:5:"admin";}'),
+('a7fc33424d58acda9b9257227d8c4b8a', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384319671, ''),
+('a8b87ecbfbe44c110fb5d47087144f73', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384320520, ''),
+('adec927d5143c362bd001abb9ff66e36', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384319056, ''),
+('b02803cdaabf915d795664a8f9d9c691', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384320074, ''),
+('b4472247cf072f3dbbded0a1a7ea9d97', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384319589, ''),
+('bb26c293c1a75bb9e9e9766e55fbd447', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384322076, ''),
+('c2d750eee6a4b8de79dca08de2fd19e9', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384319724, ''),
+('c69384552d27d56cbaeb14c212283ef1', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384320665, ''),
+('c90d08d52f32312e864cf0885fc1f6b0', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384320979, ''),
+('d000842340b915244253bbad031e5d04', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384322020, ''),
+('d300a73afb956a6ad9c72a7fb5a22fd2', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384322136, ''),
+('dabcd7345977b718b3f6cbbb2a2c4845', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384320455, ''),
+('e0f574d97d8217942f9e0d41e9896e78', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384320231, ''),
+('e36246a2a1811e6154ceb6e6d0cfd72c', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384320350, ''),
+('ef3f32a9953f63259bd57bed8d3844fe', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384320150, ''),
+('feee2e07975e188d39b92ffb93cadb9a', '127.0.0.1', 'XML-RPC for CodeIgniter', 1384318313, '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `media`
+--
+
+CREATE TABLE IF NOT EXISTS `media` (
+  `uid` int(11) NOT NULL,
+  `filename` varchar(64) NOT NULL,
+  `author` varchar(64) NOT NULL,
+  `mdate` varchar(10) NOT NULL,
+  `caption` varchar(256) NOT NULL,
+  `licence` varchar(64) NOT NULL,
+  `thumbnail` varchar(64) NOT NULL,
+  PRIMARY KEY (`uid`,`filename`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `media`
+--
+
+INSERT INTO `media` (`uid`, `filename`, `author`, `mdate`, `caption`, `licence`, `thumbnail`) VALUES
+(1, '1_IMG_3886.JPG', 'JL Parry', '2013.09.28', 'My 5-year old coffee plant', 'CCL', '01_thumb.jpg'),
+(2, '2_IMG_3887.JPG', 'JL Parry', '2013.09.28', 'My coffee station', 'CCL', '02_thumb.jpg'),
+(3, '3_IMG_3888.JPG', 'JL Parry', '2013.09.28', 'Typical coffee on hand', 'CCL', '03_thumb.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `posts`
+--
+
+CREATE TABLE IF NOT EXISTS `posts` (
+  `uid` int(11) NOT NULL AUTO_INCREMENT,
+  `thumb` varchar(64) NOT NULL,
+  `ptitle` varchar(64) NOT NULL,
+  `pdate` varchar(10) NOT NULL,
+  `tags` varchar(16) NOT NULL,
+  `slug` varchar(128) NOT NULL,
+  `story` text NOT NULL,
+  `status` varchar(1) NOT NULL,
+  PRIMARY KEY (`uid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`uid`, `thumb`, `ptitle`, `pdate`, `tags`, `slug`, `story`, `status`) VALUES
+(1, '01_thumb.jpg', 'My Coffee Plant', '2013-09-28', 'o', 'I''ve been a coffee drinker for years. This is my story.', '<p>I am a coffee-holic. I started in my teens, and have been a heavy drinker ever since.</p>\r\n<p>I favor drip coffee, or espresso, and always black.</p>\r\n<p>Instead of the stereotypical tie as a ''dad'' gift, my kids know that Starbucks cards will go over better.</p>\r\n<p>What does it do for me? I find that it wakes me up in the morning, helps relax me just before bed, is refreshing during the day, and is comfort food when the situation warrants.</p>\r\n<p>How much do I drink a day? Lots ... between 12 and 16 cups. It seems that my body has assimilated the caffeince, and perhaps even expects it. My doctor can find no contraindications for the amount I consume.</p>\r\n<p>What about tea? Certainly - about 1 cup a month, and of course green tea with sushi or Chinese :)</p>', ''),
+(2, '02_thumb.jpg', 'My Machines', '2013-09-29', 'm', 'I have a collection of coffee machines, between 15 and 20 at any point in time.', '<p>My coffee machines include electric, stovetop and countertop models; with drip, press and siphon brewing methods; for home and travel.</p>\r\n<p>My favorite everyday machine was an electric Bodum siphon machine from Starbucks. It brewed awesome coffee, but the design was flawed and water got into the base, rusting or short-circuiting the electronics. I replaced two of these under warranty, but decided I had got my money''s worth when the third one died.</p>\r\n<p>My funkiest machine is a "Royal coffee maker", a siphon machine I picked up in China. I will definitely share the story and some pictures later.</p>\r\n<p>The picture above is my coffee station ... a Cuisinart grind & brew drip coffee maker, together with airtight containers for ground coffee and for beans. The machine works well, but needs frequent cleaning - about once a week for the grinding chute, and once a month for decalcification.</p>\r\n<p>I use pre-ground coffee late at night and early in the morning, so I don''t disturb the household with the noise of grinding. By the time I am ready for a second pot, and until late evening, I let the machine do its thing, grinding the beans fresh for each pot.</p>', ''),
+(3, '03_thumb.jpg', 'My Beans', '2013-09-29', 'b', 'My tastes run to the dark roasts, particularly the African ones.', '<p>As you might gather from the picture of my current coffee selection above, I prefer the dark roasts, in particular the earthiness of the African ones.</p><p>For ground coffee, I usually get Nabob Full City Dark. I occasionally experiment with others, but keep coming back to this one. I find it great for quick cups, and for press brewing.</p><p>The Ethiopia beans are new from Starbucks, and they are divine. They have the bite of espresso beans, with a really smooth result, and with the complexity and earthiness common to many of the African varieties. Starbucks used to have several African beans, but they have simplified their selection in recent years, and I appreciate that they have brought this one back.</p><p>The Tanzania beans are from Costco. They are a dark roast, not quite as oily as those from Starbucks, and they have a very nice flavour. They are available elsewhere too, but at almost double the price for about half the quantity.</p><p>The Sumatra is from Salt Spring Coffee. It is a Pacific bean (South East Asia), but nicely roasted and oily. It makes a robust and complex cup.</p><p>Er, yes, that is Mickey Mouse coffee in the small tin. I saw it at Disneyland and couldn''t resist. I haven''t tried it yet - I am keeping it for emergencies, and to throw off anyone rummaging through my cupboard :-/</p><p>I must admit, I do have some instant coffee in my cupboard ... Nescafe ''Rich Columbian". I keep it for some recipes, and arguably for a "real" emergency. I have had my small jar of it for nearly five years, and used about a third ... perhaps it is time to replace it.</p><p>The next few months should be exciting, as I found a coffee roaster in Alabama with over a dozen African beans, and I have ordered a sort of sampler - a pound of each. I go through 1-1.5 pounds of beans a week, so should be able to declare a "winner" around Christmas :)</p>', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `properties`
+--
+
+CREATE TABLE IF NOT EXISTS `properties` (
+  `key` varchar(16) NOT NULL,
+  `value` varchar(256) NOT NULL,
+  PRIMARY KEY (`key`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `properties`
+--
+
+INSERT INTO `properties` (`key`, `value`) VALUES
+('code', 'd99'),
+('name', 'Java-Geeks'),
+('slug', 'Caffeinated ramblings, eh!'),
+('link', 'java-geeks.local'),
+('boss', 'showcase.local'),
+('port', '80');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tags`
+--
+
+CREATE TABLE IF NOT EXISTS `tags` (
+  `code` varchar(1) NOT NULL,
+  `name` varchar(16) NOT NULL,
+  `icon` varchar(64) NOT NULL,
+  PRIMARY KEY (`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tags`
+--
+
+INSERT INTO `tags` (`code`, `name`, `icon`) VALUES
+('b', 'beans', 'b.gif'),
+('c', 'cups', 'c.gif'),
+('h', 'houses', 'h.gif'),
+('m', 'machines', 'm.gif'),
+('o', 'other', 'o.gif'),
+('r', 'recipes', 'r.gif');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` varchar(10) NOT NULL,
+  `name` varchar(32) NOT NULL,
+  `password` varchar(32) NOT NULL,
+  `role` varchar(20) NOT NULL,
+  `email` varchar(128) NOT NULL,
+  `lastvisit` varchar(10) NOT NULL,
+  `status` varchar(1) NOT NULL,
+  `token` varchar(32) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `password`, `role`, `email`, `lastvisit`, `status`, `token`) VALUES
+('donald', 'The Boss Ducky', '2b69322d19e33dcb34f8ba2cf6938283', 'admin', 'donald@disney.com', '2013-10-17', 'A', ''),
+('mickey', 'Typical Mouse', '40203abe6e81ed98cbc97cdd6ec4f144', 'user', 'mickey@disney.com', '2013-10-17', 'A', '');
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
