@@ -80,6 +80,20 @@ CREATE TABLE IF NOT EXISTS `orders` (
   PRIMARY KEY (`num`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+
+DROP TABLE IF EXIST `users`;
+CREATE TABLE IF NOT EXISTS `users`
+(
+    `id`       varchar(24) NOT NULL,
+    `username` varchar(24) NOT NULL,
+    `password` varchar(24) NOT NULL,
+    `role`     varchar(24) NOT NULL,
+    PRIMARY KEY (`username`)
+)ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO `user`(`id`, `username`, `password`, `role`)VALUES
+    ('01', 'Donald', 'Duck', 'admin')
+    ('02', 'Mickey', 'Mouse', 'user');
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
