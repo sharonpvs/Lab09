@@ -48,5 +48,9 @@ define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 
+define('ADMIN'  , 999);
+define('USER'   , 100);
+define('VISITOR', 50);
+define('BANNED' , 0);
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
