@@ -63,21 +63,21 @@ class Authenticate extends Application
         
         //gets the user from the model
         $user = $this->users->get($key);
-        echo $user;
         
         //if the password from the post is the same as the model
         //continue
-        if($password == $user['password'])
+        if($password == (string)$user->password)
         {
             //set the user and permissions as defined in role
             $this->session->set_userdata('userID', $key);
             $this->session->set_userdata('userName', $user->name);
             $this->session->set_userdata('userRole', $user->role);
             
-            redirect('/');
+            redirect('/authenticate/success/'. $id);
         }
         else
         {
+            $this->errors[] = 'UserID/password combo does not match!';
             $this->tryagain($which);
         }
     }
@@ -104,7 +104,7 @@ class Authenticate extends Application
         // if no item-in progress record {
         if ($item_record == null) {
             // get the item record from the items model
-            $item_record = (array) $this->menu->get($which);
+            $item_record = (array) $this->users->get($which);
             // save it as the “item” session object
             $this->session->set_userdata('item', $item_record);
         }
@@ -117,6 +117,20 @@ class Authenticate extends Application
         $this->data['fpassword'] = makePasswordField('Password', 'password', '', "Account must have a password");
         
         $this->data['fsubmit'] = makeSubmitButton('Login', 'Do you feel lucky?');
+        
+        $this->render();
+    }
+    
+    function success($id)
+    {
+        $this->data['pagebody'] = 'success';
+        $this->data['title'] = 'login';
+        
+        $user = $this->users->get($id);
+        
+        $this->data['id'] = $id;
+        $this->data['username'] = $user->username;
+        $this->data['role'] = $user->role;
         
         $this->render();
     }
