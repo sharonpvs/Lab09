@@ -29,7 +29,7 @@ class Authenticate extends Application
         $session_record = $this->session->userdata('user');
         if ($session_record !== FALSE) {
             // does its item # match the requested one {
-            if (isset($session_record['id']) && ($session_record['id'] == $username)) {
+            if (isset($session_record['id'])) {
                 // use the item record from the session
                 $item_record = $session_record;
             }
@@ -39,7 +39,7 @@ class Authenticate extends Application
         //        $this->data = array_merge($this->data, $item_record);
         // we need to construct pretty editing fields using the formfields helper
         $this->load->helper('formfields');
-        $this->data['fusername'] = makeTextField('User Name', 'id', '', "You must have an username", 10, 25);
+        $this->data['fusername'] = makeTextField('UserID', 'id', '', "You must have an userID", 10, 25);
         $this->data['fpassword'] = makePasswordField('Password', 'password', '', "Account must have a password");
         
         $this->data['fsubmit'] = makeSubmitButton('Login', 'Do you feel lucky?');
@@ -47,32 +47,79 @@ class Authenticate extends Application
         $this->render();
     }
     
-    function login($code)
+    function login($which)
     {
         $fields = $this->input->post(); // gives us an associative array
         
+        //error checking
+        if (strlen($fields['id']) < 1)
+            $this->errors[] = 'The account has to have an id!';
+        if (strlen($fields['password']) < 1)
+            $this->errors[] = 'The account has to have a password!';
+ 
         //gets the user and password from post form
-        $key = $fields['userid'];
+        $key = $fields['id'];
         $password = md5($fields['password']);
         
         //gets the user from the model
         $user = $this->users->get($key);
+        echo $user;
         
         //if the password from the post is the same as the model
         //continue
-        if($password == (string) $user->password)
+        if($password == $user['password'])
         {
             //set the user and permissions as defined in role
             $this->session->set_userdata('userID', $key);
             $this->session->set_userdata('userName', $user->name);
             $this->session->set_userdata('userRole', $user->role);
+            
+            redirect('/');
         }
         else
         {
-            $this->index();
+            $this->tryagain($which);
         }
     }
     
+    function tryagain($which)
+    {
+        $this->data['pagebody'] = 'login';
+        $this->data['title'] = 'login';
+        
+        // use “item” as the session key
+        // assume no item record in-progress
+        $item_record = null;
+        
+        // do we have an item in the session already {
+        $session_record = $this->session->userdata('user');
+        if ($session_record !== FALSE) {
+            // does its item # match the requested one {
+            if (isset($session_record['id']) && ($session_record['id'] == $which)) {
+                // use the item record from the session
+                $item_record = $session_record;
+            }
+        }
+        
+        // if no item-in progress record {
+        if ($item_record == null) {
+            // get the item record from the items model
+            $item_record = (array) $this->menu->get($which);
+            // save it as the “item” session object
+            $this->session->set_userdata('item', $item_record);
+        }
+
+        // merge the view parms with the current item record
+        //        $this->data = array_merge($this->data, $item_record);
+        // we need to construct pretty editing fields using the formfields helper
+        $this->load->helper('formfields');
+        $this->data['fusername'] = makeTextField('UserID', 'id', '', "You must have an userID", 10, 25);
+        $this->data['fpassword'] = makePasswordField('Password', 'password', '', "Account must have a password");
+        
+        $this->data['fsubmit'] = makeSubmitButton('Login', 'Do you feel lucky?');
+        
+        $this->render();
+    }
     function logout()
     {
         //destroys session, logouts out user
