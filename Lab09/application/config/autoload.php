@@ -110,7 +110,7 @@ $autoload['language'] = array();
 */
 
 //add users model here
-$autoload['model'] = array('menu','orders','orderitems');
+$autoload['model'] = array('menu','orders','orderitems', 'users');
 
 
 /* End of file autoload.php */
