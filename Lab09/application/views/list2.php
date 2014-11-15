@@ -1,5 +1,6 @@
 <p class="lead">
     Our Menu List #2
+    <a href="/authenticate/logout" class="btn btn-large btn-inverse">Logout</a>
 </p>
 <table class="table">
     <tr>

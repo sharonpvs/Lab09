@@ -22,7 +22,13 @@ class Admin extends Application {
     function index() {
         $this->data['title'] = 'Jim\'s Joint Administration!';
         $this->data['pagebody'] = 'admin';
-
+        
+        //if they are not admin, they cannot view the page
+        if($this->session->userdata('userRole') != ADMIN)
+        {
+            redirect('/authenticate/logout');
+        }
+        
         // Get all the menu items
         $choices = $this->menu->all();
 

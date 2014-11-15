@@ -67,13 +67,22 @@ class Authenticate extends Application
         
         //if the password from the post is the same as the model
         //continue
-        echo $password . " hahahahah " . (string)$user->password;
         if($password == md5((string)$user->password))
         {
+            //keep constants as the user data
+            if($user->role == 'admin')
+            {
+                $role = ADMIN;
+            }
+            else if($user->role == 'user')
+            {
+                $role = USER;
+            }
+            
             //set the user and permissions as defined in role
             $this->session->set_userdata('userID', $key);
             $this->session->set_userdata('userName', $user->name);
-            $this->session->set_userdata('userRole', $user->role);
+            $this->session->set_userdata('userRole', $role);
             
             redirect('/authenticate/success/'. $key);
         }
@@ -127,7 +136,7 @@ class Authenticate extends Application
     function success($id)
     {
         $this->data['pagebody'] = 'success';
-        $this->data['title'] = 'login';
+        $this->data['title'] = 'Success~';
         
         $user = $this->users->get($id);
         
