@@ -51,7 +51,7 @@ $autoload['packages'] = array();
 |
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
-
+//$this->load->library('ion_auth');
 $autoload['libraries'] = array('database','parser','session');
 
 
@@ -109,7 +109,6 @@ $autoload['language'] = array();
 |
 */
 
-//add users model here
 $autoload['model'] = array('menu','orders','orderitems', 'users');
 
 

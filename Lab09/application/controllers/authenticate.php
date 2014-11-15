@@ -16,7 +16,8 @@ class Authenticate extends Application
     function __construct() {
         parent::__construct();
     }
-    function index()
+    
+    function attempt()
     {
         $this->data['pagebody'] = 'login';
         $this->data['title'] = 'login';
@@ -36,7 +37,7 @@ class Authenticate extends Application
         }
 
         // merge the view parms with the current item record
-        //        $this->data = array_merge($this->data, $item_record);
+        //$this->data = array_merge($this->data, $item_record);
         // we need to construct pretty editing fields using the formfields helper
         $this->load->helper('formfields');
         $this->data['fusername'] = makeTextField('UserID', 'id', '', "You must have an userID", 10, 25);
@@ -66,14 +67,15 @@ class Authenticate extends Application
         
         //if the password from the post is the same as the model
         //continue
-        if($password == (string)$user->password)
+        echo $password . " hahahahah " . (string)$user->password;
+        if($password == md5((string)$user->password))
         {
             //set the user and permissions as defined in role
             $this->session->set_userdata('userID', $key);
             $this->session->set_userdata('userName', $user->name);
             $this->session->set_userdata('userRole', $user->role);
             
-            redirect('/authenticate/success/'. $id);
+            redirect('/authenticate/success/'. $key);
         }
         else
         {
@@ -120,6 +122,7 @@ class Authenticate extends Application
         
         $this->render();
     }
+    
     
     function success($id)
     {
