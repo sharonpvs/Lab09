@@ -155,6 +155,22 @@ class Authenticate extends Application
         redirect('/');
     }
     
+    function noAccess()
+    {
+        $this->data['pagebody'] = 'noAccess';
+        $this->data['title'] = 'Access Denied';
+        
+        $this->render();
+    }
+    
+    function noLogin()
+    {
+        $this->data['pagebody'] = 'noLogin';
+        $this->data['title'] = 'Login to Continue';
+        
+        $this->render();
+    }
+    
 }
 
 /* End of file authenticate.php */

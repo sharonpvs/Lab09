@@ -17,6 +17,13 @@ class Order extends Application {
 
     // start a new order
     function neworder() {
+        
+        //you must be logged in to make an order
+        if($this->session->userdata('userRole') == 0)
+        {
+            redirect('/authenticate/noLogin');
+        }
+        
         $order_num = $this->orders->highest() + 1;
 
         $record = $this->orders->create();
@@ -89,7 +96,7 @@ class Order extends Application {
         $record->status = 'c';
         $record->total = $this->orders->total($order_num);
         $this->orders->update($record);
-        redirect('/');
+        redirect('/authenticate/logout');
     }
 
     // cancel the order
@@ -98,7 +105,7 @@ class Order extends Application {
         $record = $this->orders->get($order_num);
         $record->status = 'x';
         $this->orders->update($record);
-        redirect('/');
+        redirect('/authenticate/logout');
     }
 
 }

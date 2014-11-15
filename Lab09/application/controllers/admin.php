@@ -23,10 +23,16 @@ class Admin extends Application {
         $this->data['title'] = 'Jim\'s Joint Administration!';
         $this->data['pagebody'] = 'admin';
         
-        //if they are not admin, they cannot view the page
+        //if they are not logged in, they cannot view the page
+        if($this->session->userdata('userRole') == 0)
+        {
+            redirect('/authenticate/noLogin');
+        }
+        
+        //if they are not admin, access denied. Cannot view page
         if($this->session->userdata('userRole') != ADMIN)
         {
-            redirect('/authenticate/logout');
+            redirect('/authenticate/noAccess');
         }
         
         // Get all the menu items
@@ -140,7 +146,9 @@ class Admin extends Application {
             $this->errors[] = "An item's price has to be numeric!";
         $cat = $fields['category'];
         if (($cat != 'm') && ($cat != 'd') && ($cat != 'w'))
+        {
             $this->errors[] = 'Your category has to be one of m, d or c :(';
+        }
 
         // get the session item record
         $record = $this->session->userdata('item');
@@ -191,7 +199,7 @@ class Admin extends Application {
         $this->load->helper('formfields');
         $this->data['fcode'] = makeTextField('Item Code', 'code', $item_record['code'], "item identifier ... cannot be changed", 10, 25, true);
         $this->data['fname'] = makeTextField('Name', 'name', $item_record['name'], "Name your customers are comfortable with");
-        $this->data['fdescription'] = makeTextArea('Description', 'description', $item_record['description'], 'This is a long-winded and humorous caption that pops up if the visitor hovers over a menu item picture too long.');
+        $this->data['fdescription'] = makeTextArea('Description', 'description', $item_record['description'], 'This is a long-winded and humorous caption that pops up if the visitor hovers over a menu item picture too long.', 256);
         $this->data['fprice'] = makeTextField('Price', 'price', $item_record['price'], "Price per unit of one of these delicious menu items");
 
         $options = array('m' => 'Meal', 'd' => 'Drink', 's' => 'Sweet');
@@ -223,10 +231,13 @@ class Admin extends Application {
         $this->session->set_userdata('item', $record);
         // update if ok
         if (count($this->errors) < 1) {
+            
             // store the merged record into the model
             $this->menu->update($record);
+            
             // remove the item record from the session container
             $this->session->unset_userdata('item');
+            
             redirect('/admin/list2');
         } else {
             $this->edit5($which);
