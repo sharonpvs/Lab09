@@ -171,6 +171,32 @@ class Authenticate extends Application
         $this->render();
     }
     
+    function welcome()
+    {
+        $this->data['title'] = 'Jim\'s Joint!';
+        $this->data['pagebody'] = 'welcomeLogin';
+        
+
+        // Get all the completed orders
+        $completed = $this->orders->some('status','c');
+
+        // Build a multi-dimensional array for reporting
+        $orders = array();
+        foreach ($completed as $order) {
+            $this1 = array(
+                'num' => $order->num,
+                'datetime' => $order->date,
+                'amount' => $order->total
+            );
+            $orders[] = $this1;
+        }
+
+        // and pass these on to the view
+        $this->data['orders'] = $orders;
+        
+        $this->render();
+    }
+    
 }
 
 /* End of file authenticate.php */

@@ -96,7 +96,7 @@ class Order extends Application {
         $record->status = 'c';
         $record->total = $this->orders->total($order_num);
         $this->orders->update($record);
-        redirect('/authenticate/logout');
+        redirect('/authenticate/welcome');
     }
 
     // cancel the order
@@ -105,7 +105,7 @@ class Order extends Application {
         $record = $this->orders->get($order_num);
         $record->status = 'x';
         $this->orders->update($record);
-        redirect('/authenticate/logout');
+        redirect('/authenticate/welcome');
     }
 
 }

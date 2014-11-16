@@ -2,6 +2,7 @@
     Our Menu List
         <a href="/admin/list2" class="btn btn-large btn-error">Show Editable Items!</a>
         <a href="/authenticate/logout" class="btn btn-large btn-inverse">Logout</a>
+        <a href="/authenticate/welcome" class="btn btn-large btn-primary">Back</a>
 </p>
 <table class="table">
     <tr>
